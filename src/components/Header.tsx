@@ -10,11 +10,11 @@ export default function Header() {
 
   return (
     <header className="w-full shadow-sm">
-      {/* CSS Grid Container - Single Container with Two Rows */}
-      <div className="header-grid">
-        {/* TOPBAR ROW - Dark Charcoal Background */}
-        <div className="topbar">
-          <div className="container">
+      {/* Single Container with Grid Layout */}
+      <div className="container">
+        <div className="header-grid">
+          {/* TOPBAR ROW - Dark Charcoal Background */}
+          <div className="topbar">
             <div className="topbar-content">
               {/* Left: Social Links */}
               <div className="topbar-social">
@@ -50,11 +50,9 @@ export default function Header() {
               </div>
             </div>
           </div>
-        </div>
 
-        {/* MAIN HEADER ROW - White Background */}
-        <div className="main-header">
-          <div className="container">
+          {/* MAIN HEADER ROW - White Background */}
+          <div className="main-header">
             <div className="main-header-content">
               {/* Mobile Menu Button */}
               <button
@@ -127,17 +125,30 @@ export default function Header() {
       )}
 
       <style jsx>{`
-        /* === CSS GRID HEADER - SINGLE CONTAINER === */
+        /* === HEADER WRAPPER === */
+        header {
+          background-color: hsl(var(--background));
+        }
+
+        /* === SINGLE CONTAINER WITH GRID === */
+        .container {
+          max-width: var(--container-max-width);
+          margin: 0 auto;
+          padding: 0 2rem;
+        }
+
         .header-grid {
           display: grid;
           grid-template-rows: auto auto;
           width: 100%;
+          margin-left: -2rem;
+          margin-right: -2rem;
         }
 
         /* === TOPBAR STYLES === */
         .topbar {
           background-color: hsl(var(--color-dark-charcoal));
-          padding: 12px 0;
+          padding: 12px 2rem;
           border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
@@ -201,7 +212,7 @@ export default function Header() {
         /* === MAIN HEADER STYLES === */
         .main-header {
           background-color: hsl(var(--background));
-          padding: 20px 0;
+          padding: 20px 2rem;
           border-bottom: 1px solid hsl(var(--border));
         }
 
@@ -339,6 +350,24 @@ export default function Header() {
 
         /* === RESPONSIVE DESIGN === */
         @media (max-width: 768px) {
+          /* Container adjustments */
+          .container {
+            padding: 0 1.25rem;
+          }
+
+          .header-grid {
+            margin-left: -1.25rem;
+            margin-right: -1.25rem;
+          }
+
+          .topbar {
+            padding: 12px 1.25rem;
+          }
+
+          .main-header {
+            padding: 20px 1.25rem;
+          }
+
           /* Topbar - Simplified on Mobile */
           .topbar-content {
             flex-direction: column;
@@ -377,11 +406,11 @@ export default function Header() {
 
         @media (max-width: 640px) {
           .topbar {
-            padding: 8px 0;
+            padding: 8px 1.25rem;
           }
 
           .main-header {
-            padding: 16px 0;
+            padding: 16px 1.25rem;
           }
 
           .logo-text {
